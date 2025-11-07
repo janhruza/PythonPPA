@@ -1,4 +1,5 @@
 # 01.py
 # Autor: Jan Hruza
 
-print("Hello, World!")
+who:str = "World"
+print("Hello, " + who + "!")
