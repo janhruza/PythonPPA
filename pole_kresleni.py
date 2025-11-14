@@ -78,7 +78,6 @@ def chart1(array: list[int]) -> None:
         array (list[int]): Pole hodnot k vykresleni
     """
 
-    print("\nPruhovy graf:")
     for value in array:
         print(f"{value:>5} | " + "*" * value)
     print()
@@ -94,7 +93,6 @@ def chart2(array: list[int]) -> None:
 
     max_value = max(array)
 
-    print("\nSloupcovy graf:")
     for level in range(max_value, 0, -1):
         line = ""
         for value in array:
@@ -103,6 +101,7 @@ def chart2(array: list[int]) -> None:
             else:
                 line += "   "
         print(f"{level:>5} |{line}")
+
     print("      +" + "---" * len(array))
     print("       " + " ".join(f"{i+1:2}" for i in range(len(array))))
     print()
@@ -144,9 +143,76 @@ def print_array(array: list[int]) -> None:
     print("]")
 
 
+# chart1 i pro zaporna cisla
+def chart1_signed(array: list[int]) -> None:
+    """
+    Zakresli pole jako pruhovy graf i pro zaporna cisla
+
+    Params:
+        array (list[int]): Pole hodnot k vykresleni
+    """
+
+    max_value = max(array)
+    min_value = min(array)
+    zero_position = abs(min_value) if min_value < 0 else 0
+
+    print("\nPruhovy graf (i pro zaporna cisla):")
+    for value in array:
+        if value >= 0:
+            print(f"{value:>5} | " + " " * zero_position + "*" * value)
+        else:
+            print(f"{value:>5} | " + " " * (zero_position + value) + "*" * abs(value))
+    print()
+
+# chart2 i pro zaporna cisla
+def chart2_signed(array: list[int]) -> None:
+    """
+    Zakresli pole jako sloupcovy graf i pro zaporna cisla
+
+    Params:
+        array (list[int]): Pole hodnot k vykresleni
+    """
+
+    max_value = max(array)
+    min_value = min(array)
+    zero_level = abs(min_value) if min_value < 0 else 0
+
+    print("\nSloupcovy graf (i pro zaporna cisla):")
+    for level in range(max_value, min_value - 1, -1):
+        line = ""
+        for value in array:
+            if value >= level:
+                line += " * "
+            else:
+                line += "   "
+        print(f"{level:>5} |{line}")
+    print("      +" + "---" * len(array))
+    print("       " + " ".join(f"{i+1:2}" for i in range(len(array))))
+    print()
+
+# funkce, ktera pro zadanou tabulku hodnot vrati markdown tabulku
+def generate_markdown_table(array: list[int]) -> str:
+    """
+    Vygeneruje markdown tabulku pro zadane pole hodnot
+
+    Params:
+        array (list[int]): Pole hodnot
+    Returns:
+        str: Markdown tabulka jako retezec
+    """
+
+    header = "| Index | Hodnota |\n|-------|---------|\n"
+    rows = ""
+    for i in range(len(array)):
+        rows += f"| {i + 1}     | {array[i]}      |\n"
+    return header + rows
+
 if __name__ == "__main__":
     # Test funkci
-    pole = generate_random_array(10, 1, 10)
+    pole = generate_random_array(10, -10, 25)
     print_array(pole)
-    chart1(pole)
-    chart2(pole)
+    chart1_signed(pole)
+    chart2_signed(pole)
+
+    markdown_table = generate_markdown_table(pole)
+    print(markdown_table)
