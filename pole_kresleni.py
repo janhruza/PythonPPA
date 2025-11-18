@@ -177,16 +177,16 @@ def chart2_signed(array: list[int]) -> None:
     min_value = min(array)
     zero_level = abs(min_value) if min_value < 0 else 0
 
-    print("\nSloupcovy graf (i pro zaporna cisla):")
+    print("\nSloupcovy graf (i pro zaporna cisla):\n")
     for level in range(max_value, min_value - 1, -1):
         line = ""
         for value in array:
             if value >= level:
-                line += " * "
+                line += " █ "
             else:
                 line += "   "
-        print(f"{level:>5} |{line}")
-    print("      +" + "---" * len(array))
+        print(f"{level:>5} ┃{line}")
+    print("      ┗" + "━━━" * len(array))
     print("       " + " ".join(f"{i+1:2}" for i in range(len(array))))
     print()
 
