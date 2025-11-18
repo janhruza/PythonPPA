@@ -1,0 +1,14 @@
+.vscode/*
+<<<<<<< HEAD
+.__pycache__/*
+=======
+>>>>>>> 670e181caba8268db9bbd7711d4a4d59c557e284
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix
