@@ -3,11 +3,42 @@
 
 # Trida reprezentujici polozku na uctence
 class Polozka:
+
+    # Inicializace polozky s nazvem, cenou a mnozstvim
     def __init__(self, nazev: str, cena: float, mnozstvi: int = 1):
-        self.nazev = nazev
-        self.cena = cena
+        self.__nazev = nazev
+        self.__cena = cena
         self.mnozstvi = mnozstvi
-        self.celkem = cena * mnozstvi
+
+    @property
+    def nazev(self) -> str:
+        return self.__nazev
+    
+    @property
+    def cena(self) -> float:
+        return self.__cena
+    
+    @property
+    def mnozstvi(self) -> int:
+        return self.__mnozstvi
+
+    @property
+    def celkem(self) -> float:
+        return self.__mnozstvi * self.__cena
+
+    @mnozstvi.setter
+    def mnozstvi(self, mnozstvi:int):
+        if mnozstvi < 0:
+            self.__mnozstvi = 0
+        else:
+            self.__mnozstvi = mnozstvi
+
+        # alternativni zapis
+        # self.__mnozstvi = max(0, mnozstvi)
+
+    # Vraci retezec reprezentujici polozku
+    def __str__(self) -> str:
+        return f"{self.nazev}\t{self.cena:.2f} Kc\t{self.mnozstvi} ks\t{self.celkem:.2f} Kc"
 
 # Funkce pro nacteni polozky od uzivatele
 def nacti_polozku() -> Polozka:
@@ -21,10 +52,10 @@ def nacti_polozku() -> Polozka:
 
 # Funkce pro vytisknuti uctenky
 def vytiskni_uctenku(polozky: list[Polozka]) -> None:
-    print("\n----- UCTENKA -----")
+    print("----- UCTENKA -----")
     celkova_cena = 0.0
     for polozka in polozky:
-        print(f"{polozka.nazev} x{polozka.mnozstvi} @ {polozka.cena:.2f} Kc = {polozka.celkem:.2f} Kc")
+        print(polozka)
         celkova_cena += polozka.celkem
     print("-------------------")
     print(f"Celkova cena: {celkova_cena:.2f} Kc")
@@ -37,7 +68,8 @@ def main():
         if polozka.nazev == "":
             break
         polozky.append(polozka)
-
+    
+    print()
     vytiskni_uctenku(polozky)
     
 # Spusteni hlavni funkce
