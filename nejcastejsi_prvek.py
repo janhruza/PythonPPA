@@ -1,4 +1,4 @@
-# priklad_pole.py
+# nejcastejsi_prvek.py
 # Autor: Jan Hruza
 
 import random
