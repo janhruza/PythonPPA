@@ -20,6 +20,6 @@ class Uctenka:
     def Celkem(self) -> float:
         total:float = 0
         for item in self.__items:
-            total += item.cena
+            total += item.celkem
 
         return total
