@@ -4,12 +4,12 @@
 import random
 
 def nejcastejsi_prvek(pole):
-        pocet_vyskytu = {}
-        for prvek in pole:
-            if prvek in pocet_vyskytu:
-                pocet_vyskytu[prvek] += 1
-            else:
-                pocet_vyskytu[prvek] = 1
+    pocet_vyskytu = {}
+    for prvek in pole:
+        if prvek in pocet_vyskytu:
+            pocet_vyskytu[prvek] += 1
+        else:
+            pocet_vyskytu[prvek] = 1
         
         nejcastejsi = None
         max_pocet = 0
