@@ -10,7 +10,7 @@ class Uctenka:
             result += f"{item}\n"
         
         result += f"{"-" * 20}\n"
-        result += f"celkem: {self.Celkem}" # opravit na cenu
+        result += f"celkem: {self.Celkem:.2f}" # opravit na cenu
         return result
     
     def PridatPolozku(self, item:Polozka):
