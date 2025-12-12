@@ -66,6 +66,12 @@ def testContainsSame(data1:list[int], data2:list[int]):
     #     assert found, "Pole nejsou stejna"
 
 def selectSort(data:list[int]):
+    """
+    Algoritmus selection sort.
+    
+    :param data: Vstupni pole (bude modifikovano).
+    :type data: list[int]
+    """
 
     # delka pole
     n = len(data)
