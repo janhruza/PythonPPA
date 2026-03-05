@@ -9,4 +9,7 @@
 *.vsix
 
 # ignore the __pycache__ folders
-.__pycache__/*
+__pycache__/
+
+# ignore the .vscode folder
+.vscode/
